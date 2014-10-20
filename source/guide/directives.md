@@ -64,21 +64,21 @@ order: 3
 <div v-component="my-component"></div>
 ```
 
-Here `"my-component"` is not a data property - it's a string ID that Vue.js uses to lookup the corresponding Component constructor.
+这里 `"my-component"` 不是一个数据属性，而是一个字符串ID，而Vue.js用它来寻找相应组件的构造函数。
 
-Since Vue.js 0.10, you can also use mustache expressions inside literal directives. This allows you to dynamically resolve the type of component you want to use:
+从 Vue.js 0.10开始，你也可以在文字指令中使用 mustache 表达式了。这允许你动态的的生成你想要看到的组件：
 
 ``` html
 <div v-component="{&#123; isOwner ? 'owner-panel' : 'guest-panel' &#125;}"></div>
 ```
 
-However, note that mustache expressions inside literal directives are evaluated **only once**. After the directive has been compiled, it will no longer react to value changes. To dynamically instantiate different components at run time, use the [v-view](/api/directives.html#v-view) directive.
+然而，记住指令中的 mustache 表达式只能转化 **一次**。在指令被编译后，他就不再对数值变化起作用了。为了动态的在运行中实例化不同的组件，使用 [v-view](/api/directives.html#v-view) 指令。
 
-A full list of literal directives can be found in the [API reference](/api/directives.html#Literal_Directives).
+你可以在这个列表中找到所有的文字指令 [API reference](/api/directives.html#Literal_Directives)。
 
-## Empty Directives
+## 空指令
 
-Some directives don't even expect an attribute value - they simply do something to the element once and only once. For example the `v-pre` directive:
+有的指令不需要任何的属性值，他们只是简单的对元素运行一次。 举个例子 `v-pre` 指令:
 
 ``` html
 <div v-pre>
@@ -86,17 +86,17 @@ Some directives don't even expect an attribute value - they simply do something 
 </div>
 ```
 
-A full list of empty directives can be found in the [API reference](/api/directives.html#Empty_Directives).
+你可以在这个列表中找到所有的空指令 [API reference](/api/directives.html#Empty_Directives).
 
-## Writing a Custom Directive
+## 写一个自定义指令
 
-You can register a global custom directive with the `Vue.directive()` method, passing in a **directiveID** followed by a **definition object**. A definition object can provide several hook functions (all optional):
+使用 `Vue.directive()` 方法，你可以注册一个全局的自定义指令，通过一个与指令id **directiveID** 关联的定义对象 **definition object** 。一个定义对象可以提供几个拦截函数（全都是自定义）：
 
-- **bind**: called only once, when the directive is first bound to the element.
-- **update**: called when the binding value changes. The new value is provided as the argument.
-- **unbind**: called only once, when the directive is unbound from the element.
+- **bind**: 当指令第一次绑定在元素上时访问一次。
+- **update**: 当绑定数值变化时访问。更新值会以变量的形式提供。
+- **unbind**: 当指令与元素解绑时访问。
 
-**Example**
+**例子**
 
 ``` js
 Vue.directive('my-directive', {
@@ -117,13 +117,13 @@ Vue.directive('my-directive', {
 })
 ```
 
-Once registered, you can use it in Vue.js templates like this (you need to add the Vue.js prefix to it):
+一旦注册，你可以这么使用 Vue.js 模板（你需要加一个 Vue.js 的前缀）：
 
 ``` html
 <div v-my-directive="someValue"></div>
 ```
 
-When you only need the `update` function, you can pass in a single function instead of the definition object:
+当你只需要 `update` 功能，你可以通过简单的定义对象代替之：
 
 ``` js
 Vue.directive('my-directive', function (value) {
@@ -131,18 +131,18 @@ Vue.directive('my-directive', function (value) {
 })
 ```
 
-All the hook functions will be copied into the actual **directive object**, which you can access inside these functions as their `this` context. The directive object exposes some useful properties:
+所有的拦截函数都会复制到实际的定义对象中 **directive object**，你可以通过这些函数访问他们的 `this` 环境。这些指令对象会提供一些有用的属性：
 
-- **el**: the element the directive is bound to.
-- **key**: the keypath of the binding, excluding arguments and filters.
-- **arg**: the argument, if present.
-- **expression**: the raw, unparsed expression.
-- **vm**: the context ViewModel that owns this directive.
-- **value**: the current binding value.
+- **el**: 指令绑定的元素。
+- **key**: 绑定的键值，不包括参数和过滤器。
+- **arg**: 可能提供的参数。
+- **expression**: 没有压缩过的原生表达式。
+- **vm**: 拥有这些指令的相关视图模型。
+- **value**: 当前绑定的数值。
 
-<p class="tip">You should treat all these properties as read-only and refrain from changing them. You can attach custom properties to the directive object too, but be careful not to accidentally overwrite existing internal ones.</p>
+<p class="tip">你应该将所有的的属性作为只读并尽可能少的更改它们。你也可以让自定义指令和这些指令对象连接，但是要小心不要偶然的覆盖掉内部已有的那些。</p>
 
-An example of a custom directive using some of these properties:
+一个使用了一些属性的自定义指令的例子：
 
 ``` html
 <div id="demo" v-demo="LightSlateGray : msg"></div>
@@ -169,7 +169,7 @@ var demo = new Vue({
 })
 ```
 
-**Result**
+**结果**
 
 <div id="demo" v-demo="LightSlateGray : msg"></div>
 <script>

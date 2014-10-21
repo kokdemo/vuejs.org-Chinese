@@ -193,11 +193,11 @@ var demo = new Vue({
 })
 </script>
 
-### Creating Literal &amp; Empty Directives
+### 生成文字和空指令
 
-If you pass in `isLiteral: true` or `isEmpty: true` when creating a custom directive, all data-binding work will be skipped for that directive, and only `bind()` and `unbind()` will be called. In literal directives the expression will still be parsed, so you can still access information such as `this.expression`, `this.key` and `this.arg`. For empty directives, Vue.js will never parse the expression even if it exists.
+如果你在生成自定义指令的时候使用 `isLiteral: true` 或者 `isEmpty: true` ，所有的数据绑定工作将会跳过这个指令，此时只有 `bind()` 和 `unbind()` 才会调用。在文字指令中，表达式一直是解析过的，所以你可以访问一些信息比如 `this.expression`， `this.key` 和 `this.arg`。 对于空指令来说，即使表达式存在，Vue.js 也不会解析表达式。
 
-Example:
+例子：
 
 ``` html
 <div v-literal-dir="foo"></div>

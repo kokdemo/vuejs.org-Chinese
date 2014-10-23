@@ -1,4 +1,4 @@
-title: Getting Started
+title: 开始吧！马猴烧酒
 type: guide
 order: 2
 ---

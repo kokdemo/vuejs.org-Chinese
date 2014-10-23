@@ -13,6 +13,8 @@ This site is built with [hexo](http://zespia.tw/hexo/). Site content is written 
     教程部分：
     
     1. index.md 100%
+    2. 指令 100%
+    3. 过滤器 80%
 
 ## Developing
 

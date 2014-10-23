@@ -212,11 +212,12 @@ Vue.directive('literal-dir', {
 })
 ```
 
-### Creating a Function Directive
+### 生成一个函数指令
 
-Vue.js encourages the developer to separate data from behavior, so instance methods are expected to be contained in the `methods` option and not inside data objects. As a result, functions inside data objects are ignored and normal directives will not be able to bind to them.
+Vue.js 鼓励开发者将数据与行为分离，因此实例方法应该写在 `methods` 中而不是写在数据对象里。不然
+，数据对象中的函数将会被无视，而普通指令将无法与他们绑定。
 
-To gain access to functions inside `methods` in your custom directive, you need to pass in the `isFn` option:
+为了在你的自定义指令中通过 `methods` 获取函数，你需要设置 `isFn` 选项：
 
 ``` js
 Vue.directive('my-handler', {
@@ -233,6 +234,8 @@ Vue.directive('my-handler', {
 })
 ```
 
-Passing in `isFn:true` also enables your custom directive to accept inline expressions like `v-on` does. For more comprehensive examples, check out `src/directives/` in the source code.
+通过设置 `isFn:true` 也可以使你的自定义指令接受行内表达式，就像 `v-on` 那样。
 
-Next: [Filters in Depth](/guide/filters.html).
+想要看到更多的综合性的例子，请自行阅读源码中的 `src/directives/` 部分。（译者注：作者你够懒……）
+
+下一章节: [深入理解过滤器 Filters in Depth](/guide/filters.html).

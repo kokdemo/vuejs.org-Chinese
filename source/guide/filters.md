@@ -1,4 +1,4 @@
-title: Filters in Depth
+title: 我在学过滤器的道路上迷失了方向
 type: guide
 order: 4
 ---
@@ -95,10 +95,10 @@ Vue.filter('concat', function (value, key) {
 <span>{&#123;msg | concat userInput&#125;}</span>
 ```
 
-Filters that relies on the state of the ViewModel that is calling it are referred to as **computed filters**. For this simple example above, you can achieve the same result with just an expression, but for more complicated procedures that need more than one statements, you need to put them either in a computed property or a computed filter.
+依赖它所访问视图模型状态的过滤器被叫做 **计算过滤器computed filters**。对于这个简单的示例，你可以仅仅使用一个表达式达到相同的结果，但是对于一些多余一句的复杂程序，你需要把他们放在一起，当到一个可计算属性或者是计算过滤器当中。
 
-For example, the built-in `filterBy` and `orderBy` filters are both computed filters that perform non-trivial work on the Array being passed in. For custom filters, Vue.js checks for computed filters by looking for references to `this` in a filter's function body. Any directive that uses a computed filter will be automatically compiled as an expression so its filters are included in the dependency collection process.
+举个栗子，内置的`filterBy`以及`orderBy`过滤器都是计算过滤器，他们执行一些比较重要的数组传递工作。对于自定义过滤器，Vue.js 通过寻找一个过滤器的函数体中引用`this`关键字来检查计算过滤器。任何使用计算过滤器的指令将会自动的编译成一个表达式，这样它的过滤器就被包括在依赖收集程序中了。
 
-If you find the concept of computed filters confusing at the moment, don't worry. It is handled automatically by Vue.js and you don't really need to know how it works to leverage it. As you get familiar with more related concepts, it will all make sense.
+如果你现在觉得计算过滤器的概念还很是纠结，别担心，金鸡胶……。他会被Vue.js自动的处理，你并不需要知道他的内在工作原理。在你了解了更多的相关概念知识之后，你将会豁然开朗。
 
-Now that you know everything about directives and filters, let's talk about how to [display a list of items](/guide/list.html).
+现在你已经对指令和过滤器有一个完整的认识，是时候聊聊怎么[显示一个列表](/guide/list.html)了。

@@ -1,4 +1,4 @@
-title: Directives In Depth
+title: 教练，我想学指令
 type: guide
 order: 3
 ---

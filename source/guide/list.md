@@ -1,4 +1,4 @@
-title: Displaying a List
+title: 显示列表
 type: guide
 order: 5
 ---

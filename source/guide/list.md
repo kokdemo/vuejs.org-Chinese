@@ -3,9 +3,9 @@ type: guide
 order: 5
 ---
 
-You can use the `v-repeat` directive to repeat a template element based on an Array of objects on the ViewModel. For every object in the Array, the directive will create a child ViewModel using that object as the data object. On and inside the template element you have access to properties of both the child ViewModel and the parent ViewModel. In addition, you also have access to the current child ViewModel's `$index` property, which is the index of its data object in the Array.
+通过访问一个视图模型中的数组，你可以使用 `v-repeat` 指令循环生成模型元素。对于这个数组中的每个对象，指令都会使用这个对象生成一个子视图模型作为它的数据对象。通过这个模板元素，你可以访问到子视图模型和他的父视图模型中的属性。此外，你也可以访问当前子视图元素的 `$index` 属性，这是数组中他的数据对象的索引。
 
-**Example:**
+**又是一个栗子：**
 
 ``` html
 <ul id="demo">
@@ -28,7 +28,7 @@ var demo = new Vue({
 })
 ```
 
-**Result:**
+**结果：**
 
 <ul id="demo"><li v-repeat="items" class="item-{&#123;$index&#125;}">{&#123;$index&#125;} - {&#123;parentMsg&#125;} {&#123;childMsg&#125;}</li></ul>
 <script>
@@ -44,9 +44,9 @@ var demo = new Vue({
 })
 </script>
 
-## Arrays of Primitive Values
+## 数组的初始值
 
-For Arrays containing primitive values, you can access the value simply as `$value`:
+对于数组包含的初始值，你可以通过 `$value` 来简单的访问：
 
 ``` html
 <ul id="tags">
@@ -65,7 +65,7 @@ new Vue({
 })
 ```
 
-**Result:**
+**结果：**
 <ul id="tags" class="demo"><li v-repeat="tags">{&#123;$value&#125;}</li></ul>
 <script>
 new Vue({
@@ -76,9 +76,9 @@ new Vue({
 })
 </script>
 
-## Using an identifier
+## 使用一个标识符
 
-Sometimes we might want to have more explicit variable access instead of implicitly falling back to parent scope. You can do that by providing an argument to the `v-repeat` directive and use it as the identifier for the item being iterated:
+有的时候我们可能需要更多的显式变量访问而不是隐式的回退到父作用域。你可以通过提供一个参数给 `v-repeat` 指令，当个体被重复声明的时候使用它作为一个标识符来达到访问更多显示变量的目的：
 
 ``` html
 <ul id="users">
@@ -89,9 +89,9 @@ Sometimes we might want to have more explicit variable access instead of implici
 </ul>
 ```
 
-## Mutation Methods
+## 变异方法
 
-Under the hood, Vue.js intercepts an observed Array's mutating methods (`push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `sort()` and `reverse()`) so they will also trigger View updates.
+在内部机制中，Vue.js 会拦截一个被监听数组的变异方法（`push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `sort()` 以及`reverse()`），这样他们也会触发视图更新。
 
 ``` js
 // the DOM will be updated accordingly
@@ -99,11 +99,11 @@ demo.items.unshift({ childMsg: 'Baz' })
 demo.items.pop()
 ```
 
-You should avoid directly setting elements of a data-bound Array with indices, because those changes will not be picked up by Vue.js. Instead, use the agumented `$set()` method. Vue.js augments observed Arrays with two convenience methods: `$set()` and `$remove()`:
+你应该避免直接与索引设置数据绑定数组的元素，因为这些将不会被 Vue.js 检测到。因此，使用 `$set()` 方法替代之。Vue.js 通过两个方便的函数来增强监听数组：`$set()` 和 `$remove()` ：
 
 ### $set( index, value )
 
-Setting a value in the Array is self-explanatory:
+在数组中设置一个值：
 
 ``` js
 // same as `demo.items[0] = ...` but triggers view update
@@ -112,14 +112,14 @@ demo.items.$set(0, { childMsg: 'Changed!'})
 
 ### $remove( index | value )
 
-`$remove()` is just syntax sugar for `splice()`. It will remove the element at the given index. When the argument is not a number, `$remove()` will search for that value in the array and remove the first occurrence.
+`$remove()` 仅仅是一个 `splice()` 的语法糖。它会根据所给的索引移除相应的元素。当参数不是一个数字的时候，`$remove()` 将会在数组中搜索这个值，并且移除掉对应的第一个匹配值。
 
 ``` js
 // remove the item at index 0
 demo.items.$remove(0)
 ```
 
-## Setting a new Array
+## 设置一个新数组
 
 When you are using non-mutating methods, e.g. `filter()`, `concat()` or `slice()`, the returned Array will be a different instance. In that case, you can just set the value to the new Array:
 

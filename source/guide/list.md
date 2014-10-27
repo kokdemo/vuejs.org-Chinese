@@ -1,4 +1,4 @@
-title: 显示列表
+title: 不是假发，是列表
 type: guide
 order: 5
 ---
@@ -121,23 +121,22 @@ demo.items.$remove(0)
 
 ## 设置一个新数组
 
-When you are using non-mutating methods, e.g. `filter()`, `concat()` or `slice()`, the returned Array will be a different instance. In that case, you can just set the value to the new Array:
+当你使用一些非变异的方法的时候，比如`filter()`, `concat()` 或者 `slice()`，返回的数组将会是一个不同的实例。在这种情况下，你只能给新的数组中设置值：
 
 ``` js
 demo.items = demo.items.filter(function (item) {
     return item.childMsg.match(/Hello/)
 })
 ```
+你可能认为这将会影响已有的DOM并重建所有的东西。但是不要担心，Vue.js使用了某些黑魔法（一些内在算法），会重新利用已经存在的视图模型和DOM节点，这会将DOM操作尽可能的减少到最小。同时，因为批量的更新，对一个事件循环中的数组的多重改变也将只会触发一次比对。
 
-You might think this will blow away the existing DOM and re-build everything. But worry not - Vue.js uses some smart algorithms internally that reuse existing ViewModels and DOM nodes, and incurs the least number of DOM manipulations possible. Also, because of update batching, multiple changes to an Array in the same event loop will only trigger one comparison.
+## 数组过滤器
 
-## Array Filters
+有的时候我们仅仅需要显示一个过滤或者分类过的数组，并不需要对原始数据做改变或者重置。Vue 提供了两种内置的过滤器来达到该目的：`filterBy` 和 `orderBy` 。你可以围观文档 [documentations](/api/filters.html#filterBy) 获得更多信息。
 
-Sometimes we only need to display a filtered or sorted version of the Array without actually mutating or resetting the original data. Vue provides two built-in filters to simplify such usage: `filterBy` and `orderBy`. Check out their [documentations](/api/filters.html#filterBy) for more details.
+## 通过一个对象进行循环
 
-## Iterating Through An Object
-
-Starting in Vue.js v0.8.8, you can also use `v-repeat` to iterate through the properties of an Object. Each repeated instance will have a special property `$key`. For primitive values, you also get `$value` which is similar to primitive values in Arrays.
+从 Vue.js 的 v0.8.8版本开始，你可以通过一个对象的属性来循环使用 `v-repeat` 。每一个循环实例都有一个特殊的属性 `$key` 。对于原始值，你可以使用 `$value` 来过的与数组中初始值相同的数值。
 
 ``` html
 <ul id="repeat-object">
@@ -168,7 +167,7 @@ new Vue({
 })
 ```
 
-**Result:**
+**结果：**
 <ul id="repeat-object" class="demo"><li v-repeat="primitiveValues">{&#123;$key&#125;} : {&#123;$value&#125;}</li><li>===</li><li v-repeat="objectValues">{&#123;$key&#125;} : {&#123;msg&#125;}</li></ul>
 <script>
 new Vue({
@@ -191,8 +190,8 @@ new Vue({
 })
 </script>
 
-## $add() and $delete()
+## $add() 和 $delete()
 
-In ECMAScript 5 there is no way to detect when a new property is added to an Object, or when a property is deleted from an Object. To counter for that, observed objects will be augmented with two methods: `$add(key, value)` and `$delete(key)`. These methods can be used to add / delete properties from observed objects while triggering the desired View updates.
+在 ECMAScript 5 中是没有办法检测出一个新的属性被添加到一个对象中的，抑或是一个属性从对象中被删除。为了解决这一问题，被监测的对象将会通过两个方法进行扩展：`$add(key, value)` 和 `$delete(key)`。这些方法用于在对应的视图模型更新被触发时，从监测对象中增加或者删除这些属性。
 
-Next up: [Listening for Events](/guide/events.html).
+下一章节： [事件的监听Listening for Events](/guide/events.html).

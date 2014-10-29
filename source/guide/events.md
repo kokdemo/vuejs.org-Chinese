@@ -92,10 +92,12 @@ new Vue({
 
 ## 为什么把事件监听写到HTML中？
 
-You might be concerned about this whole event listening approach violates the good old rules about "separation of concern". Rest assured - since all Vue.js handler functions and expressions are strictly bound to the ViewModel that's handling the current View, it won't cause any maintainance difficulty. In fact, there are several benefits in using `v-on`:
+你可能会纠结为什么整个事件监听的方法违背了“关系分离（译者注：估计就是逻辑表现分离这个意思吧）”的老规则。请放心，所有的的Vue.js的处理函数和表达式都是严格绑定在处理当前视图的视图模型上，它不会导致任何的维护困难。实际上，使用 `v-on` 还有这么一些好处：
 
-1. It makes it easier to locate the handler function implementations within your JS code by simply skimming the HTML template.
-2. Since you don't have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
-3. When a ViewModel is destroyed, all event listeners are automatically removed. You don't need to worry about cleaning it up yourself.
+1. 它使得你可以更快的通过略读HTML模板来定位处理函数在 JS 代码中的位置。
 
-Next up: [Handling Forms](/guide/forms.html).
+2. 由于你不需要手动的在 JS 中绑定监听器到，你的视图模型代码将会是纯粹的逻辑，并且与DOM完全无关。这也减轻了测试的压力。
+
+3. 当一个视图模型被摧毁时，所有的监听器都会被自动的移除掉。你不需要担心需要自己来清理这些东西。
+
+下一章节： [处理表单Handling Forms](/guide/forms.html).

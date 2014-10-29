@@ -18,7 +18,8 @@ This site is built with [hexo](http://zespia.tw/hexo/). Site content is written 
     2. 指令 100%
     3. 过滤器 100%
     4. 列表 100%
-    5. 事件监听 90%
+    5. 事件监听 100%
+    6. 建立列表 100%
 
 ## Developing
 

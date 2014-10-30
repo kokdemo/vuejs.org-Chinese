@@ -1,11 +1,11 @@
-title: Computed Properties
+title: 计算属性
 type: guide
 order: 8
 ---
 
-Vue.js' inline expressions are very convenient, but the best use cases for them are simple boolean operations or string concatenations. For more complicated logic, you should use **computed properties**.
+Vue.js' 的行内表达式十分的方便，但是使用其最好的场景是一些简单的布尔操作，或者是字符串的连接。对于复杂的的逻辑，你应该使用 **计算属性computed properties**。
 
-In Vue.js, you define computed properties with the `computed` option:
+在 Vue.js 中， 你可以使用 `computed` 选项来定义计算属性：
 
 ``` js
 var demo = new Vue({

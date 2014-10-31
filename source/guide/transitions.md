@@ -1,21 +1,21 @@
-title: Adding Transition Effects
+title: 增加动画效果
 type: guide
 order: 9
 ---
 
-With Vue.js' transition hooks you can apply automatic transition effects when elements are inserted into or removed from the DOM. There are three options to implement transitions with Vue.js: CSS transitions, CSS animations, and JavaScript functions.
+通过 Vus.js 的动画钩子，当一个元素被插入或者移除出一个DOM的时候，你可以申请自动动画效果。Vue.js中有三个实现动画的选项：CSS 变化，CSS动画，Javascript函数。
 
-<p class="tip">All Vue.js transitions are triggered only if the DOM manipulation was applied by Vue.js, either through built-in directives, e.g. `v-if`, or through ViewModel instance methods, e.g. `vm.$appendTo()`.</p>
+<p class="tip">所有的 Vue.js 动画都只会被 Vue.js所申请的DOM操作所触发，也包括内置的指令，举例来说，`v-if` 或者是通过试图模型内置的函数，举例来说，`vm.$appendTo()`。</p>
 
-## CSS Transitions
+## CSS 变化
 
-To enable CSS transitions on an element, simply give it an empty `v-transition` directive:
+为了使一个元素中的CSS变化可用，只需要简单给它一个空的 `v-transition` 指令：
 
 ``` html
 <p class="msg" v-if="show" v-transition>Hello!</p>
 ```
 
-You will also need to provide CSS rules for `v-enter` and `v-leave` classes (the class names can be configured with `Vue.config()`):
+你也同时需要为 `v-enter` 和 `v-leave` 类提供CSS（这个类名可以通过 `Vue.config()` 来设置）：
 
 ``` css
 .msg {
@@ -57,18 +57,19 @@ new Vue({
 })
 </script>
 
-Now when the `show` property changes, Vue.js will insert or remove the `<p>` element accordingly, and apply transition classes as specified below:
+现在当 `show` 属性变化的时候，Vue.js将会插入或者相应的 `<p>` 元素，并且按照如下规则申请变化的类：
 
-- When `show` becomes false, Vue.js will:
-    1. Apply `v-leave` class to the element to trigger the transition;
-    2. Wait for the transition to finish; (listening to a `transitionend` event)
-    3. Remove the element from the DOM and remove `v-leave` class.
+- 当 `show` 为假时，Vue.js将会：
+    1. 为这个元素申请 `v-leave` 类，并触发动画；
+    2. 等待动画完成；（监听 `transitionend` 的事件）
+    3. 移除掉DOM上的合格元素和对应的`v-leave` 类。
 
 - When `show` becomes true, Vue.js will:
     1. Apply `v-enter` class to the element;
     2. Insert it into the DOM;
     3. Force a CSS layout so `v-enter` is actually applied;
     4. Remove the `v-enter` class to trigger a transition back to the element's original state.
+
 
 <p class="tip">It is important to ensure that the target element's CSS transition rules are properly set and it will fire a `transitionend` event. Otherwise Vue.js will not be able to determine when the transition is finished.</p>
 

@@ -20,6 +20,7 @@ This site is built with [hexo](http://zespia.tw/hexo/). Site content is written 
     4. 列表 100%
     5. 事件监听 100%
     6. 表单 100%
+    7. 计算属性 100%
 
 ## Developing
 

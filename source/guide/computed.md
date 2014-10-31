@@ -1,4 +1,4 @@
-title: 计算属性
+title: 燃烧小宇宙吧！计算属性！
 type: guide
 order: 8
 ---
@@ -31,7 +31,7 @@ var demo = new Vue({
 demo.fullName // 'Foo Bar'
 ```
 
-When you only need the getter, you can provide a single function instead of an object:
+如果你仅仅只需要 get 方法，你可以只提供一个简单函数代替前面的对象：
 
 ``` js
 // ...
@@ -43,11 +43,11 @@ computed: {
 // ...
 ```
 
-A computed property is essentially a property defined with getter/setter functions. You can use a computed property just like a normal property, but when you access it, you get the value returned by the getter function; when you change its value, you trigger the setter function passing in the new value as its argument.
+一个计算属性本质上是一个定义了 getter和setter 函数的属性（译者注：这里getter和setter我没有想到比较好的翻译，就这么着吧……单词也简单）。你可以像一个普通的属性来使用一个计算属性，当你访问它的时候，你会获得 getter 函数的返回值；当你改变它的值的时候，你会将新的值作为参数传进触发的的 setter 函数中。
 
-## Dependency Collection Gotcha
+## 依赖收集陷阱
 
-Like inline expressions, Vue.js automatically collects dependencies for computed properties and refreshes them when their dependencies change. There's one thing to keep in mind though: since Vue.js collects dependencies by monitoring which properties are accessed inside a getter, you need to be careful when there is conditional logic within your getters. Consider this example:
+就像行内表达式一样，Vue.js 会自动的收集计算属性的依赖，并在依赖变化时自动刷新这些值。这里有一个你需要记住的东西：当 Vue.js 通过一个 getter 来监视他们的属性从而收集依赖的时候，你需要小心的对待有 getter 中的条件逻辑的部分。考虑下面这个例子：
 
 ``` js
 // ...
@@ -59,7 +59,7 @@ status: function () {
 // ...
 ```
 
-If `validated` is true in the beginning, then `errMsg` will not be accessed and therefore not collected as a dependency. Vice-versa for `okMsg`. To get around this you can simply manually access potentially unreachable properties in your getter:
+如果 `validated` 在开始的时候是真，那么 `errMsg` 将不会访问，因此将不会收集到依赖。`okMsg` 反之亦然。为了绕开这个问题，你可以在你的getter中，简单手动操作访问那些可能无法访问的属性：
 
 ``` js
 // ...
@@ -74,6 +74,6 @@ status: function () {
 // ...
 ```
 
-<p class="tip">You don't need to worry about this in inline expressions because Vue.js' expression parser takes care of it for you.</p>
+<p class="tip">不要担心这些问题会在行内表达式中，因为 Vue.js 的表达式解析器会为你处理这些问题。</p>
 
-Next: [Adding Transition Effects](/guide/transitions.html)
+下一章节： [增加动画效果Adding Transition Effects](/guide/transitions.html)

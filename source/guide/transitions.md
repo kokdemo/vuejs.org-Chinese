@@ -1,4 +1,4 @@
-title: 增加动画效果
+title: 我要替天行道，增加动画效果
 type: guide
 order: 9
 ---
@@ -7,9 +7,9 @@ order: 9
 
 <p class="tip">所有的 Vue.js 动画都只会被 Vue.js所申请的DOM操作所触发，也包括内置的指令，举例来说，`v-if` 或者是通过试图模型内置的函数，举例来说，`vm.$appendTo()`。</p>
 
-## CSS 变化
+## CSS 变形
 
-为了使一个元素中的CSS变化可用，只需要简单给它一个空的 `v-transition` 指令：
+为了使一个元素中的CSS变形可用，只需要简单给它一个空的 `v-transition` 指令：
 
 ``` html
 <p class="msg" v-if="show" v-transition>Hello!</p>
@@ -57,27 +57,28 @@ new Vue({
 })
 </script>
 
-现在当 `show` 属性变化的时候，Vue.js将会插入或者相应的 `<p>` 元素，并且按照如下规则申请变化的类：
+现在当 `show` 属性变化的时候，Vue.js将会插入或者相应的 `<p>` 元素，并且按照如下规则添加变化的类：
 
 - 当 `show` 为假时，Vue.js将会：
-    1. 为这个元素申请 `v-leave` 类，并触发动画；
+    1. 为这个元素添加 `v-leave` 类，并触发动画；
     2. 等待动画完成；（监听 `transitionend` 的事件）
     3. 移除掉DOM上的合格元素和对应的`v-leave` 类。
 
-- When `show` becomes true, Vue.js will:
-    1. Apply `v-enter` class to the element;
-    2. Insert it into the DOM;
-    3. Force a CSS layout so `v-enter` is actually applied;
-    4. Remove the `v-enter` class to trigger a transition back to the element's original state.
+- 当 `show` 为真时，Vus.js 将会：
+    1. 为元素添加 `v-enter` 类。
+    2. 插入 DOM 中。
+    3. `v-enter`实际的发挥效果，CSS布局开始变化。
+    4. 移除 `v-enter` 类，触发一个动画回归元素的原始状态。（译者注：这里的动画方法也是最普遍实用的方法了。）
 
+<p class="tip">要确保目标元素的CSS动画样式正确的设置了，并且能够产生一个 `transitionend` 事件，这是很重要的。不然Vue.js 没办法区分啥时候动画结束。</p>
 
-<p class="tip">It is important to ensure that the target element's CSS transition rules are properly set and it will fire a `transitionend` event. Otherwise Vue.js will not be able to determine when the transition is finished.</p>
+## CSS 动画
 
-## CSS Animations
+（译者注：这里有一个CSS变形，有一个CSS动画，两者并不是一套系统，但是我统一的把整个过程称之为动画，请不要打我……）
 
-CSS animations are applied in a similar fashion with transitions, but using the `v-animation` directive. The difference is that `v-enter` is not removed immediately after the element is inserted, but on an `animationend` callback.
+CSS 动画的使用和CSS 变形有一些相似，但是使用 `v-animation` 指令。不同的地方在于， `v-enter` 并不会在元素插入之后立马就被移除掉，而是需要使用一个 `animationend` 回调。
 
-**Example:** (omitting prefixed CSS rules here)
+**栗子：** (这里省略了CSS的前缀（译者注：动画和变形的前缀简直就是噩梦……）)
 
 ``` html
 <p class="animated" v-if="show" v-animation>Look at me!</p>
@@ -194,9 +195,9 @@ new Vue({
 })
 </script>
 
-## JavaScript Functions
+## JavaScript 函数
 
-Vue.js provides a way to call arbitrary JavaScript functions during element insertion/removal. To do that you first need to register your effect functions:
+Vue.js 提供一个方法，可以再元素的插入或者是移除中来调用任意的JS函数。为了使用这个魔法，你需要首先声明你的效果函数：
 
 ``` js
 Vue.effect('my-effect', {
@@ -209,12 +210,12 @@ Vue.effect('my-effect', {
 })
 ```
 
-The third argument, `timeout`, is a wrapped version of `setTimeout`. You should use it in place of `setTimeout` so that when an effect is cancelled, its associated timers can be cleared.
+第三个参数，`timeout`，是一个 `setTimeout` 的封装版本。你应该使用它来代替 `setTimeout`，以便当一个效果被取消时，清楚相关联的计时器。
 
-Then you can use it by providing the effect id to `v-effect`:
+然后你可以通过给 `v-effect` 提供id来使用它了：
 
 ``` html
 <p v-effect="my-effect"></p>
 ```
 
-Next: [Composing ViewModels](/guide/composition.html).
+下一章节： [组装视图模型](/guide/composition.html).

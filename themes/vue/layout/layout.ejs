@@ -12,12 +12,12 @@
         </script>
         <%- css(page.index ? 'css/index' : 'css/page') %>
         <%- partial('partials/ga') %>
-        <script src="/js/vue.min.js"></script>
+        <script src="./js/vue.min.js"></script>
     </head>
     <body>
         <div id="mobile-bar">
             <a class="menu-button"></a>
-            <a class="logo" href="/"></a>
+            <a class="logo" href="./"></a>
         </div>
         
         <% if (page.index) { %>
@@ -35,8 +35,8 @@
         </div>
 
         <% if (!page.index) { %>
-            <script src="/js/smooth-scroll.min.js"></script>
-            <script src="/js/common.js"></script>
+            <script src="./js/smooth-scroll.min.js"></script>
+            <script src="./js/common.js"></script>
         <% } %>
 
     </body>

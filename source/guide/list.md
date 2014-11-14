@@ -194,4 +194,4 @@ new Vue({
 
 在 ECMAScript 5 中是没有办法检测出一个新的属性被添加到一个对象中的，抑或是一个属性从对象中被删除。为了解决这一问题，被监测的对象将会通过两个方法进行扩展：`$add(key, value)` 和 `$delete(key)`。这些方法用于在对应的视图模型更新被触发时，从监测对象中增加或者删除这些属性。
 
-下一章节： [事件的监听Listening for Events](/guide/events.html).
+下一章节： [事件的监听Listening for Events](./events.html).

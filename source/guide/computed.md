@@ -76,4 +76,4 @@ status: function () {
 
 <p class="tip">不要担心这些问题会在行内表达式中，因为 Vue.js 的表达式解析器会为你处理这些问题。</p>
 
-下一章节： [增加动画效果Adding Transition Effects](/guide/transitions.html)
+下一章节： [增加动画效果Adding Transition Effects](./transitions.html)

@@ -70,4 +70,4 @@ new Vue({
 </script>
 
 （译者注：这一章节好简单……）
-下一章节： [计算属性Computed Properties](/guide/computed.html).
+下一章节： [计算属性Computed Properties](./computed.html).

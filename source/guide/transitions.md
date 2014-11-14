@@ -218,4 +218,4 @@ Vue.effect('my-effect', {
 <p v-effect="my-effect"></p>
 ```
 
-下一章节： [组装视图模型](/guide/composition.html).
+下一章节： [组装视图模型](./composition.html).

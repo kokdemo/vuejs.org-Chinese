@@ -238,4 +238,4 @@ Vue.directive('my-handler', {
 
 想要看到更多的综合性的例子，请自行阅读源码中的 `src/directives/` 部分。（译者注：作者你够懒……）
 
-下一章节: [深入理解过滤器 Filters in Depth](/guide/filters.html).
+下一章节: [深入理解过滤器 Filters in Depth](./filters.html).

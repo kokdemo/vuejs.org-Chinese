@@ -155,7 +155,7 @@ var demo = new Vue({
 
 你可以点击一个todo项去切换它，或者你可以打开你的浏览器命令行运行 `demo` 对象，举个例子，你修改 `demo.title` ，给`demo.todos` 增加一个新对象，或者切换todo 的`done` 状态。 
 
-看到这里，你脑海中应该有一些问题了，别担心，我们会接下来一一解答的。下一课：[Directives in Depth](/guide/directives.html).
+看到这里，你脑海中应该有一些问题了，别担心，我们会接下来一一解答的。下一课：[Directives in Depth](./directives.html).
 
 [AngularJS]: http://angularjs.org
 [KnockoutJS]: http://knockoutjs.com

@@ -100,4 +100,4 @@ new Vue({
 
 3. 当一个视图模型被摧毁时，所有的监听器都会被自动的移除掉。你不需要担心需要自己来清理这些东西。
 
-下一章节： [处理表单Handling Forms](/guide/forms.html).
+下一章节： [处理表单Handling Forms](./forms.html).

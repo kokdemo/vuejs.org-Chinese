@@ -1,11 +1,11 @@
-title: Composing Components
+title: 组装视图模型
 type: guide
 order: 10
 ---
 
-## Registering a Component
+## 注册一个组件
 
-Vue.js allows you to treat registered ViewModel constructors as reusable components that are conceptually similar to [Web Components](http://www.w3.org/TR/components-intro/), without requiring any polyfills. To register a component, first create a subclass constructor of Vue using `Vue.extend()`, then use the global `Vue.component()` method to register that constructor:
+Vue.js 允许你将被注册的视图模型构造器当作一个可复用的组件，它的概念与 [Web 组件](http://www.w3.org/TR/components-intro/) 有一定相似之处，即不需要任何的填充物。为了注册一个组件，首先使用 `Vue.extend()` 创建一个子类构造器，仁厚使用全局的 `Vue.component()` 方法来注册这个构造器：
 
 ``` js
 // Extend Vue to get a reusable constructor
@@ -16,7 +16,7 @@ var MyComponent = Vue.extend({
 Vue.component('my-component', MyComponent)
 ```
 
-To make things easier, you can also directly pass in the option object instead of an actual constructor:
+为了让这个简单一些，你也可以直接通过一个选项对象代替一个实际的构造器：
 
 ``` js
 // Implicitly call Vue.extend, then register the returned constructor.
@@ -28,19 +28,20 @@ Vue.component('my-component', {
 })
 ```
 
-Then you can use it in a parent ViewModel's template (make sure the component is registered **before** you instantiate your top-level ViewModel):
+接着你就可以在一个父级视图模型的模板中（确保组件在你实例化你的最高级别的视图模型 **之前** 被注册）使用它：
 
 ``` html
 <div v-component="my-component"></div>
 ```
 
-If you prefer, components can also be used in the form of a custom element tag:
+如果你喜欢，组件也可以被以传统元素标签的形式使用：
 
 ``` html
 <my-component></my-component>
 ```
 
-<p class="tip">To avoid naming collisions with native elements and stay consistent with the W3C Custom Elements specification, the component's ID **must** contain a hyphen `-` to be usable as a custom tag.</p>
+<p class="tip">
+为了避免与实际HTML标签的命名冲突，并与 W3C 的规格保持一致，被用作定制标签的组件ID **必须** 包括一个连字符 ‘-’。 </p>
 
 It is important to understand the difference between `Vue.extend()` and `Vue.component()`. Since `Vue` itself is a constructor, `Vue.extend()` is a **class inheritance method**. Its task is to create a sub-class of `Vue` and return the constructor. `Vue.component()`, on the other hand, is an **asset registration method** similar to `Vue.directive()` and `Vue.filter()`. Its task is to associate a given constructor with a string ID so Vue.js can pick it up in templates. When directly passing in options to `Vue.component()`, it calls `Vue.extend()` under the hood.
 
